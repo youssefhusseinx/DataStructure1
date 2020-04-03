@@ -1,7 +1,17 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs;
-
+/**
+ * This class implements the LinkedList interface using these methods to create Singly linked list object.
+ * The class have two member variables:
+ * listcount that shows number of nodes in list.
+ * header which points to a dummy node at the head of the list.
+ * @author Youssef Hussein
+ */
 public class Singly implements ILinkedList{
-	
+	/**
+	 * This is the node private class which contains both data (as object) and next node.
+	 * @author Youssef Hussein
+	 *
+	 */
 	private class Node {
 		Object data ;
 		Node next ;
@@ -16,7 +26,6 @@ public class Singly implements ILinkedList{
 		header.next=null;
 		this.listCount=0;
 	}
-	
 	@Override
 	public void add(int index, Object element)  {
 		if (valid(index-1)||index==1)
@@ -137,7 +146,10 @@ public class Singly implements ILinkedList{
 		} 
 		return found;
 	}
-	
+	/**
+	 * This method prints the data of the linked list nodes.
+	 * @param list The list required to be printed
+	 */
 	public void print (Singly list) {
 		if (listCount != 0) 
 		{
@@ -146,7 +158,11 @@ public class Singly implements ILinkedList{
 				System.out.println(i.data);
 		}
 	}
-	
+	/**
+	 * This method checks the validity of the given index.
+	 * @param index The index to operate on.
+	 * @return True if this index points to a node and false if it is out of range.
+	 */
 	public boolean valid(int index) {
 		boolean valid = false;
 		if (index >0 && index <= listCount)

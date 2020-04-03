@@ -1,4 +1,9 @@
 package eg.edu.alexu.csd.datastructure.stack;
+/**
+ * This interface contain methods for the infix to postfix expression evaluator. 
+ * @author Youssef Hussein
+ *
+ */
 public interface IExpressionEvaluator {
 /**
 * Takes a symbolic/numeric infix expression as input and converts it to

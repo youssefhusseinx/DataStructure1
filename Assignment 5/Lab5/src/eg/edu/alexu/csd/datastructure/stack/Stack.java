@@ -1,7 +1,10 @@
 package eg.edu.alexu.csd.datastructure.stack;
 import eg.edu.alexu.csd.datastructure.linkedList.cs.*;
-
-
+/**
+ * This class implementsthe stack interface which contains methods to create and operate on Stack data structure.
+ * @author Youssef Hussein
+ *
+ */
 public class Stack implements IStack {
 	
 	Singly list = new Singly();

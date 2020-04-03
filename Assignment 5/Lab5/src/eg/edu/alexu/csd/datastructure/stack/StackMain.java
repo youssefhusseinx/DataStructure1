@@ -1,7 +1,10 @@
 package eg.edu.alexu.csd.datastructure.stack;
-
 import java.util.Scanner;
-
+/**
+ * This is the main method for the Stack application.
+ * @author Youssef Hussein
+ *
+ */
 public class StackMain {
 	static Stack stack = new Stack();
 	 public static void main(String[] args) {

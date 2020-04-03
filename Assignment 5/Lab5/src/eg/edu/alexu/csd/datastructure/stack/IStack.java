@@ -1,4 +1,9 @@
 package eg.edu.alexu.csd.datastructure.stack;
+/**
+ * This interface contains method to create and manipulate data in stack.
+ * @author Youssef Hussein
+ *
+ */
 public interface IStack {
 /**
 * Removes the element at the top of stack and returns that element.

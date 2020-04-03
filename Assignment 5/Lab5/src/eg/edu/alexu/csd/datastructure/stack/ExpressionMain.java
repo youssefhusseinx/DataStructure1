@@ -1,6 +1,10 @@
 package eg.edu.alexu.csd.datastructure.stack;
 import java.util.*;
-
+/**
+ * Main method for ExpressionEvaluator.
+ * @author Youssef Hussein
+ *
+ */
 public class ExpressionMain {
 	static ExpressionEvaluator evaluator = new ExpressionEvaluator();
 	 public static void main(String[] args) {
@@ -16,7 +20,7 @@ public class ExpressionMain {
 			 System.out.print("\nExpression Value = " + value + "\n");
 		 }
 		 else
-			 System.out.print("Invalid Expression");
+			 System.out.print("Invalid Expression.\n");
 		 main(args);
 	 }
 }

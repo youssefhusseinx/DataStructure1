@@ -1,13 +1,27 @@
 package eg.edu.alexu.csd.datastructure.stack;
 import java.util.*;
-import java.util.regex.Pattern;
-
+/**
+ * This class implements the interface of expression evaluator application.
+ * It includes methods to validate,change notation and evaluate postfix expressions.
+ * @author Youssef Hussein
+ */
 
 public class ExpressionEvaluator implements IExpressionEvaluator {
 
 	@Override
+	/**
+	* Takes a symbolic/numeric infix expression as input and converts it to
+	* postfix notation. There is no assumption on spaces between terms or the
+	* length of the term (e.g., two digits symbolic or numeric term)
+	*
+	* @param expression
+	* infix expression
+	* @return postfix expression
+	*/
 	public String infixToPostfix(String expression) {
+		
 		expression=expression.replaceAll(" ", "");
+		expression=expression.replaceAll("--", "+");
 		String postfix = new String();
 		for(int i=0; i<expression.length();i++) {
 			 if (expression.charAt(i)=='-'&&Character.isLetterOrDigit(expression.charAt(i+1))&&(i==0||expression.charAt(i-1)=='*'||expression.charAt(i-1)=='/'||expression.charAt(i-1)=='-'||expression.charAt(i-1)=='+')) {
@@ -62,6 +76,13 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 	}
 
 	@Override
+	/**
+	* Evaluate a postfix numeric expression, with a single space separator
+	*
+	* @param expression
+	* postfix expression
+	* @return the expression evaluated value
+	*/
 	public int evaluate(String expression) {
 		for (int i=0;i<expression.length();i++) {
 			if(Character.isLetter(expression.charAt(i))) {
@@ -111,10 +132,16 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 		}
 	}
 
-	
+	/**
+	 * This method validates the input expression in three different ways.It check it uses ony operations and alphanumeric characters,validity of parenthesis and correct operand and operations.
+	 * @param expression
+	 * Input expression in infix notation.
+	 * @return true if all three checks are correct and false if else.
+	 */
 	public boolean validateinput(String expression) {
 		boolean chars=true;
 		expression=expression.replaceAll(" ", "");
+		expression=expression.replaceAll("--", "+");
 		for(int i=0 ; i<expression.length();i++) {
 			if(!Character.isLetterOrDigit(expression.charAt(i))&&expression.charAt(i)!='('&&expression.charAt(i)!=')'&&expression.charAt(i)!='-'&&expression.charAt(i)!='+'&&expression.charAt(i)!='/'&&expression.charAt(i)!='*'){
 				chars=false;
@@ -124,6 +151,7 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 			return false;
 		boolean operators=false;
 		Stack paren = new Stack();
+		
 		for (int i=0; i<expression.length();i++) {
 			if (!Character.isLetterOrDigit(expression.charAt(i))){
 				if(expression.charAt(i)=='(') {
@@ -142,16 +170,23 @@ public class ExpressionEvaluator implements IExpressionEvaluator {
 				}
 			}
 			else {
-				if(i!=(expression.length()-1)&&Character.isLetter(expression.charAt(i))&&Character.isLetter(expression.charAt(i+1)))
+				if(i!=(expression.length()-1)&&Character.isLetter(expression.charAt(i))&&Character.isLetterOrDigit(expression.charAt(i+1)))
+					return false;
+				else if (i!=(expression.length()-1)&&Character.isDigit(expression.charAt(i))&&Character.isLetter(expression.charAt(i+1)))
 					return false;
 				operators=true;
 			}
 		}
-		if(!paren.isEmpty())
-			return false;
-		return chars&operators;
+		return chars&operators&paren.isEmpty();
 	}
 	
+	/**
+	 * This method checks the precedence of the given operator.The higher the returned value the higher the precedence.
+	 * @param op
+	 * The operator required to check its precedence.
+	 * @return precedence
+	 * The precedence of this operator
+	 */
 	public static int precedence(char op) { 
         if(op=='*'||op=='/')
         	return 2;

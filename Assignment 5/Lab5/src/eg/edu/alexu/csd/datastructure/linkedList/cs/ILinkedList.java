@@ -1,5 +1,9 @@
 package eg.edu.alexu.csd.datastructure.linkedList.cs;
-
+/**
+ * This interface contains LinkedList required methods like adding, removing, set... etc.
+ * @author Youssef Hussein
+ *
+ */
 public interface ILinkedList {
 	
 	/**
